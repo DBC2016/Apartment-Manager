@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Apartment Manager Login-->
@@ -71,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="796" y="-379"/>
         </scene>
-        <!--Resident View Controller-->
+        <!--Resident Portal-->
         <scene sceneID="yxy-lP-394">
             <objects>
-                <viewController title="Resident View Controller" id="2TN-8f-JtV" sceneMemberID="viewController">
+                <viewController id="2TN-8f-JtV" customClass="ResViewController" customModule="ApartmentManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eZc-Im-cUd"/>
                         <viewControllerLayoutGuide type="bottom" id="C7E-Du-G2A"/>
@@ -87,7 +88,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="99" id="dvo-z7-Mkr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="99" id="dvo-z7-Mkr" customClass="ResidentTableViewCell" customModule="ApartmentManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dvo-z7-Mkr" id="Hq9-Zj-JgC">
@@ -96,12 +97,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Req Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-Tj-Ota">
                                                     <rect key="frame" x="31" y="51" width="299" height="39.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="Cell"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvv-EE-5Fn">
                                                     <rect key="frame" x="31" y="3" width="120" height="39.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="Cell"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -109,10 +112,16 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="LiC-ee-gt4" kind="show" id="eel-ng-I2X"/>
+                                            <outlet property="resDescLabel" destination="MeA-Tj-Ota" id="2wf-xE-rYO"/>
+                                            <outlet property="resReqTitleLabel" destination="Qvv-EE-5Fn" id="eMh-pN-7ws"/>
+                                            <segue destination="LiC-ee-gt4" kind="show" identifier="residentToDetailSegue" id="eel-ng-I2X"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2TN-8f-JtV" id="x7h-Z4-r4p"/>
+                                    <outlet property="delegate" destination="2TN-8f-JtV" id="Jnv-IC-piG"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goH-Kf-SeP">
                                 <rect key="frame" x="522" y="28" width="46" height="30"/>
@@ -125,11 +134,14 @@
                     <navigationItem key="navigationItem" title="Resident Portal" id="Yon-28-TEQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="EJh-rX-hkf">
                             <connections>
-                                <segue destination="LiC-ee-gt4" kind="show" id="zFl-1g-wmI"/>
+                                <segue destination="LiC-ee-gt4" kind="show" identifier="addRequestSegue" id="zFl-1g-wmI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="resTableView" destination="MVj-OD-CBa" id="tzx-SF-3W0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uaF-Dk-w0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="136" id="rpP-JH-3GP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="136" id="rpP-JH-3GP">
                                         <rect key="frame" x="0.0" y="92" width="600" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rpP-JH-3GP" id="o05-qm-8TR">
@@ -191,12 +203,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5M-0J-WkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1547" y="39"/>
+            <point key="canvasLocation" x="1529" y="32"/>
         </scene>
         <!--Maintenance Requests-->
         <scene sceneID="03z-fZ-5TU">
             <objects>
-                <viewController id="LiC-ee-gt4" sceneMemberID="viewController">
+                <viewController id="LiC-ee-gt4" customClass="ReqDetailViewController" customModule="ApartmentManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kls-6n-yil"/>
                         <viewControllerLayoutGuide type="bottom" id="8H4-v0-MC3"/>
@@ -204,11 +216,74 @@
                     <view key="view" contentMode="scaleToFill" id="CGu-mN-2Hm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHz-iM-DmF">
+                                <rect key="frame" x="18" y="99" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iL0-pg-xrB">
+                                <rect key="frame" x="20" y="150" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ca8-R0-z5x">
+                                <rect key="frame" x="114" y="99" width="203" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="All about wine." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8b1-5Z-rad">
+                                <rect key="frame" x="116" y="158" width="333" height="79"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ki-VL-DXT">
+                                <rect key="frame" x="20" y="422" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-uN-qhY">
+                                <rect key="frame" x="114" y="293" width="367" height="87"/>
+                                <date key="date" timeIntervalSinceReferenceDate="485728998.81171">
+                                    <!--2016-05-23 20:43:18 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24k-gD-I6b">
+                                <rect key="frame" x="20" y="289" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G90-B9-1AJ">
+                                <rect key="frame" x="114" y="417" width="51" height="31"/>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Maintenance Requests" id="MQA-Zb-6PK">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="RBQ-qM-M9x"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Save" id="RBQ-qM-M9x">
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="LiC-ee-gt4" id="A8b-Vy-Z1j"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="f1p-gA-Bkl">
+                                <connections>
+                                    <action selector="trashButtonPressed:" destination="LiC-ee-gt4" id="hBA-hM-Aok"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="requestDatePickerView" destination="k9Q-uN-qhY" id="xVZ-4s-fAx"/>
+                        <outlet property="requestDescripTextView" destination="8b1-5Z-rad" id="P93-f2-IcX"/>
+                        <outlet property="requestNameTextField" destination="ca8-R0-z5x" id="xmt-NU-k15"/>
+                        <outlet property="requestPrioritySwitch" destination="G90-B9-1AJ" id="A5A-ah-Mnm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V8K-J5-x81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -234,6 +309,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eel-ng-I2X"/>
+        <segue reference="zFl-1g-wmI"/>
     </inferredMetricsTieBreakers>
 </document>

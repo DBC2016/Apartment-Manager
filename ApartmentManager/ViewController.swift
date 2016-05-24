@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     let backendless = Backendless.sharedInstance()
     var currentUser = BackendlessUser()
+
     
     
     
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
     
     
     
-    //MARK: - User Login Methods
+    //MARK: - USER LOGIN METHODS
     
     
     private func isValidLogin(email: String, password: String) -> Bool {
@@ -76,7 +77,6 @@ class ViewController: UIViewController {
         
     }
     
-    // 2. TEST REGISTER/LOGIN/LOGOUT AND MAKE SURE SHOWS UP IN BACKENDLESS
     
     @IBAction private func loginUser(button: UIButton) {
         guard let email = emailEntry.text else {
@@ -111,8 +111,14 @@ class ViewController: UIViewController {
     }
     
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destController = segue.destinationViewController as! ResViewController
+        destController.currentUser = currentUser
+    }
     
-    //MARK - LIFE CYCLE METHODS
+    
+    
+    //MARK: - LIFE CYCLE METHODS
 
     override func viewDidLoad() {
         super.viewDidLoad()

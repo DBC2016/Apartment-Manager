@@ -14,9 +14,11 @@
 		625C33341CECA31E00C10843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625C33331CECA31E00C10843 /* Assets.xcassets */; };
 		625C33371CECA31E00C10843 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 625C33351CECA31E00C10843 /* LaunchScreen.storyboard */; };
 		625C337E1CECF32C00C10843 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C337D1CECF32C00C10843 /* Requests.swift */; };
-		625C33811CED0FD300C10843 /* ResTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33801CED0FD300C10843 /* ResTableViewController.swift */; };
+		625C33811CED0FD300C10843 /* ResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33801CED0FD300C10843 /* ResViewController.swift */; };
 		625C33831CED106800C10843 /* ReqDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33821CED106800C10843 /* ReqDetailViewController.swift */; };
-		625C33851CED109100C10843 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33841CED109100C10843 /* AdminTableViewController.swift */; };
+		625C33851CED109100C10843 /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33841CED109100C10843 /* AdminViewController.swift */; };
+		625C33E11CEE34C800C10843 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33E01CEE34C800C10843 /* LoginManager.swift */; };
+		625C33E91CEE5BA300C10843 /* ResidentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625C33E81CEE5BA300C10843 /* ResidentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +31,11 @@
 		625C33361CECA31E00C10843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		625C33381CECA31E00C10843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625C337D1CECF32C00C10843 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
-		625C33801CED0FD300C10843 /* ResTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResTableViewController.swift; sourceTree = "<group>"; };
+		625C33801CED0FD300C10843 /* ResViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResViewController.swift; sourceTree = "<group>"; };
 		625C33821CED106800C10843 /* ReqDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReqDetailViewController.swift; sourceTree = "<group>"; };
-		625C33841CED109100C10843 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		625C33841CED109100C10843 /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		625C33E01CEE34C800C10843 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		625C33E81CEE5BA300C10843 /* ResidentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResidentTableViewCell.swift; sourceTree = "<group>"; };
 		ADDDE3B21F4B4A7A02E5C8CC /* Pods-ApartmentManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApartmentManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ApartmentManager/Pods-ApartmentManager.debug.xcconfig"; sourceTree = "<group>"; };
 		AE5131517244BA087BF13CBA /* Pods-ApartmentManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApartmentManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-ApartmentManager/Pods-ApartmentManager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,16 +90,18 @@
 		625C332B1CECA31E00C10843 /* ApartmentManager */ = {
 			isa = PBXGroup;
 			children = (
-				625C337F1CECF33500C10843 /* Model */,
 				625C332C1CECA31E00C10843 /* AppDelegate.swift */,
 				625C332E1CECA31E00C10843 /* ViewController.swift */,
 				625C33301CECA31E00C10843 /* Main.storyboard */,
-				625C33841CED109100C10843 /* AdminTableViewController.swift */,
+				625C33841CED109100C10843 /* AdminViewController.swift */,
 				625C33821CED106800C10843 /* ReqDetailViewController.swift */,
-				625C33801CED0FD300C10843 /* ResTableViewController.swift */,
+				625C33801CED0FD300C10843 /* ResViewController.swift */,
+				625C33E81CEE5BA300C10843 /* ResidentTableViewCell.swift */,
 				625C33331CECA31E00C10843 /* Assets.xcassets */,
 				625C33351CECA31E00C10843 /* LaunchScreen.storyboard */,
 				625C33381CECA31E00C10843 /* Info.plist */,
+				625C337F1CECF33500C10843 /* Model */,
+				625C33E01CEE34C800C10843 /* LoginManager.swift */,
 			);
 			path = ApartmentManager;
 			sourceTree = "<group>";
@@ -231,12 +237,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				625C33851CED109100C10843 /* AdminTableViewController.swift in Sources */,
-				625C33811CED0FD300C10843 /* ResTableViewController.swift in Sources */,
+				625C33851CED109100C10843 /* AdminViewController.swift in Sources */,
+				625C33811CED0FD300C10843 /* ResViewController.swift in Sources */,
+				625C33E11CEE34C800C10843 /* LoginManager.swift in Sources */,
 				625C337E1CECF32C00C10843 /* Requests.swift in Sources */,
 				625C332F1CECA31E00C10843 /* ViewController.swift in Sources */,
 				625C33831CED106800C10843 /* ReqDetailViewController.swift in Sources */,
 				625C332D1CECA31E00C10843 /* AppDelegate.swift in Sources */,
+				625C33E91CEE5BA300C10843 /* ResidentTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

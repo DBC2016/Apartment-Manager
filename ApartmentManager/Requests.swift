@@ -8,20 +8,14 @@
 
 import UIKit
 
+
 class Requests: NSObject {
-    
-    
     
     var requestToDo            :String = ""
     var requestComplete        :String = ""
     var requestDescript        :String = ""
-    var requestPriority        :Int = 0
+    var requestPriority        :Bool = false
     var requestDateCreated     :NSDate!
     var ownerId                :String = ""
-
-    
-
-        
-        
 
 }
